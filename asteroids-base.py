@@ -19,7 +19,12 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
-
+#Classe Mob que representa o meteoro
+class Mob(pygame.sprite.Sprite):
+    
+    def __init2__(self):
+        pygame.sprite.Sprite.__init2__(self)
+        
 #Classe Jogador que representa a nave
 class Player(pygame.sprite.Sprite):
     
@@ -67,6 +72,9 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 # Nome do jogo
 pygame.display.set_caption("Asteroids")
 
+#Variável para o ajuste de velocidade.
+clock = pygame.time.Clock()
+
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'starfield.png')).convert()
 background_rect = background.get_rect()
@@ -84,6 +92,8 @@ try:
     # Loop principal.
     running = True
     while running:
+        # Ajusta a velocidade do jogo.
+        clock.tick(FPS)
         
         # Processa os eventos (mouse, teclado, botão, etc).
         for event in pygame.event.get():
